@@ -1,6 +1,7 @@
 class OrderItem < ApplicationRecord
-  
-  belogs_to :items
-  belogs_to :orders
-  
+
+  belongs_to :items
+  belongs_to :orders
+
+
 end
