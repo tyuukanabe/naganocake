@@ -13,6 +13,32 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  namespace :admin do
+    resources :items,except: [:destroy]
+    resources :customers, except: [:destroy, :create, :new]
+    resources :genres, except: [:destroy, :show, :new]
+    get '/' => 'homes#top'
+    resources:orders, only: [:show, :update] do
+      resource:order_items, only: [:update]
+    end
+  end
+
+  scope module: :public do
+    resources :customers, except: [:destroy]
+    get '/' => 'homes#top'
+    get '/about' => 'homes#about'
+    patch 'unsubscribe' => 'customers#unsubscribe'
+    get 'confirm' => 'customers#confirm'
+    resources :items, only: [:index, :show]
+    resources :cart_items, except: [:edit, :new, :show]
+    delete 'destroy_all' => 'cart_items#destroy_all'
+    resources :orders, except: [:destroy, :edit]
+    post 'confirm' => 'orders#confirm'
+    get 'complete' => 'orders#complete'
+    resources :addresses, except: [:new, :show]
+  end
+
+
 
 
 end
