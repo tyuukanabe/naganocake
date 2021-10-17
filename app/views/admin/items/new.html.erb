@@ -1,5 +1,5 @@
 <h1>商品新規登録</h1>
-　<%= form_with model: @item, local:true do |f| %>
+　<%= form_with model: [:admin, @item], local:true do |f| %>
   <h3>商品画像</h3>
   <%= f.attachment_field :image %>
   <h3>商品名</h3>
@@ -15,5 +15,3 @@
   <%= f.radio_button :is_status, false %><p>販売停止</p>
   <%= f.submit '新規登録' %>
 <% end %>
-
-<div class="done">
