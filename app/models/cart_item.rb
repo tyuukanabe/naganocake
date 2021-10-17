@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
-  
+
   attachment :image
-  belogs_to :customers
-  belogs_to :items
-  
+  belongs_to :customers
+  belongs_to :items
+
 end
