@@ -4,5 +4,8 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
   end
   
+  def show
+    
+  
 end
 
