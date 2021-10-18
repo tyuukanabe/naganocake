@@ -1,0 +1,12 @@
+
+<% @items.each do |item| %>
+  <%= item.id %>
+  <%= item.item_name %>
+  <%= (item.price).to_s(:delimited) %>
+  <!--<= item.genre.name %>-->
+  <% if item.is_status == true %>
+    <p>販売中</p>
+  <% else %>
+    <p>販売停止</p>
+  <% end %>
+<% end %>
