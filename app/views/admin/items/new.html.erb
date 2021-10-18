@@ -7,7 +7,7 @@
   <h3>商品説明</h3>
   <%= f.text_area :introduction %>
   <h3>ジャンル名</h3>
-  <!--ジャンル検索-->
+  <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, prompt: "選択してください", class: 'form-control' %>
   <h3>税抜価格</h3>
   <%= f.text_field :price %>
   <h3>販売ステータス</h3>
@@ -15,3 +15,7 @@
   <%= f.radio_button :is_status, false %><p>販売停止</p>
   <%= f.submit '新規登録' %>
 <% end %>
+
+
+
+
