@@ -1,7 +1,19 @@
 <h3>会員一覧</h3>
+<table class="table table-hover">
+  <tr>
+    <th>会員ID</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
 <% @customers.each do |customer| %>
-  <%= customer.id %>
-  <%= customer.full_name %>
-  <%= customer.email %>
-  <%= customer.is_deleted %>
+  <tr>
+    <td><%= customer.id %></td>
+    <td class=><%= link_to admin_customer_path(customer.id) do %>
+    <%= customer.full_name %>
+    </td><% end %>
+    <td><%= customer.email %></td>
+    <td><%= customer.is_deleted %></td>
+  </tr>
 <% end %>
+</table>
