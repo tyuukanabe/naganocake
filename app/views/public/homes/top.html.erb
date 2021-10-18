@@ -20,7 +20,9 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    
+
+    <%= render 'public/homes/genres', genres: @genres %>
+
 <div class="container">
 
     <h3 class="text-center">新着商品</h3>
@@ -30,7 +32,7 @@
         <!--新着ケーキ1-->
         <div class="col-md-4">
             <div class="w-50 mx-auto mt-4">
-              <!--< %= link_to item_image_path(image.id) do %>-->
+              <!--< %= link_to item_path(image.id) do %>-->
                 <%= image_tag('no_image2.png') %>
               <!--< % end %>-->
               <div class="card-body">
