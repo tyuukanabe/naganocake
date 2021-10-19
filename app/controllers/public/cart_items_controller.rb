@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
   def index
+
     # @customer = current_customer
     # @cart_items = CartItem.all
 
@@ -24,6 +25,7 @@ class Public::CartItemsController < ApplicationController
   private
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :quantity)
+
   end
 
 end
