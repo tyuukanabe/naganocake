@@ -8,9 +8,9 @@
     <%= attachment_image_tag @item, :image, :fill, 450, 350, fallback: "no_image.jpg" %>
   </div>
   <div>
-    <h2>商品名：<%= @item.item_name %></h2>
-    <p>説明：<%= @item.introduction %></p>
-    <p>金額：¥ <%= @item.price %>円</p>
+    <h2><%= @item.item_name %></h2>
+    <p><%= @item.introduction %></p>
+    <p>¥ <%= @item.add_tax_price %>(税込)</p>
 
     <% if customer_signed_in? %>
       <% unless @item.is_status == false %>
