@@ -11,12 +11,12 @@
     <% @orders.each do |order| %>
     　<tr>
         <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
-        <td></td>
-        <td><%= (item.price).to_s(:delimited) %></td>
+        <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+        <td><%= order.order_items.sum(:quantity) %></td>
         <td><%= order.order_status_i18n %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-  <%= paginate @items %>
+  <%= paginate @orders %>
