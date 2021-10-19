@@ -27,56 +27,26 @@
 
     <h3 class="text-center">新着商品</h3>
 
-    <div class="row">
-
-        <!--新着ケーキ1-->
+   <div class="row">
+    <% @items.each do |item| %>
         <div class="col-md-4">
             <div class="w-50 mx-auto mt-4">
-              <!--< %= link_to item_path(image.id) do %>-->
-                <%= image_tag('no_image2.png') %>
-              <!--< % end %>-->
+              <%= link_to item_path(item.id) do %>
+                <%= attachment_image_tag item, :image, :fill, 250, 160, fallback: "no_image.jpg" %>
+              <% end %>
               <div class="card-body">
                 <p class="card-title">
-                    <strong><i class="far fa-flag"></i><span> 〇〇ケーキ</span></strong>
+                  <%= link_to item_path(item.id) do %>
+                    <strong><i class="far fa-flag"></i><span> <%= item.item_name %></span></strong>
+                  <% end %>
                 </p>
-                <p>¥ 00円</p>
+                <p>¥ <%= item.price %>円</p>
               </div>
             </div>
         </div>
-
-        <!--新着ケーキ2-->
-        <div class="col-md-4">
-            <div class="w-50 mx-auto mt-4">
-              <!--< %= link_to item_image_path(image.id) do %>-->
-                <%= image_tag('no_image2.png') %>
-              <!--< % end %>-->
-              <div class="card-body">
-                <p class="card-title">
-                    <strong><i class="far fa-flag"></i><span> 〇〇ケーキ</span></strong>
-                </p>
-                <p>¥ 00円</p>
-              </div>
-            </div>
-        </div>
-
-        <!--新着ケーキ3-->
-        <div class="col-md-4">
-            <div class="w-50 mx-auto mt-4">
-              <!--< %= link_to item_image_path(image.id) do %>-->
-                <%= image_tag('no_image2.png') %>
-              <!--< % end %>-->
-              <div class="card-body">
-                <p class="card-title">
-                    <strong><i class="far fa-flag"></i><span> 〇〇ケーキ</span></strong>
-                </p>
-                <p>¥ 00円</p>
-              </div>
-            </div>
-        </div>
-
-
-    </div>
-
+    <% end %>
+</div>
+<%= link_to "全ての商品を見る >", items_path %>
 
 
 </div>
