@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <h3 class="offset-2 my-4"><%= @customer.full_name %>さんの会員情報編集</h3>
+        <%= form_with model:@customer, local:true do |f| %>
+            <div class="col-3 offset-2 mb-2">会員ID</div>
+            <div class="col-7 mb-2"><%= @customer.id %></div>
+            <%= f.label :氏名 %>
+            <%= f.text_field :last_name %>
+            <%= f.text_field :first_name %>
+            <%= f.label :フリガナ %>
+            <%= f.text_field :last_name_kana %>
+            <%= f.text_field :first_name_kana %>
+            <%= f.label :住所 %>
+            <%= f.text_field :address %>
+            <%= f.label :電話番号 %>
+            <%= f.text_field :telephone %>
+            <%= f.label :メールアドレス %>
+            <%= f.text_field :email %>
+            <%= f.submit "変更を保存" %>
+        <% end %>
+

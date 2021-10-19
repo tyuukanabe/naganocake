@@ -1,11 +1,15 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    # @items = Items.all
+    @genres = Genre.all
+    @items = Item.page(params[:page]).reverse_order
+    # @items = Item.where(genre_id: 100).page(params[:page]).reverse_order
   end
 
   def show
-    # @item =Items.find(params[:id])
+    @item =Item.find(params[:id])
+    @genres = Genre.all
+    @cart_item = CartItem.new
   end
 
 end

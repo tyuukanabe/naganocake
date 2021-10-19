@@ -1,13 +1,33 @@
 <div>
   <!--render(ジャンル)-->
-
+  <%= render 'public/homes/genres', genres: @genres %>
 </div>
 
 <div>
-  <%= attachment_image_tag @image, :image %>
-  <h2>商品名：</p>
-  <p>説明：</p>
-  <p>金額：¥ 円</p>
+  <div>
+    <%= attachment_image_tag @item, :image, :fill, 450, 350, fallback: "no_image.jpg" %>
+  </div>
+  <div>
+    <h2>商品名：<%= @item.item_name %></h2>
+    <p>説明：<%= @item.introduction %></p>
+    <p>金額：¥ <%= @item.price %>円</p>
+
+    <% if customer_signed_in? %>
+      <% unless @item.is_status == false %>
+        <%= form_with url: cart_items_path, model: @cart_item, method: :post, local: true do |f| %>
+          <%= f.select :quantity, [*1..10], selected: 1 %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :customer_id, value: current_customer.id %>
+          <%= f.button :type => 'submit', class:"btn btn btn-success px-4 ml-3" do %>
+            <i class="fas fa-cart-plus"></i> カートに入れる
+          <% end %>
+        <% end %>
+      <% else %>
+        <h4>申し訳ありません。販売中止中です</h4>
+      <% end %>
+    <% end %>
+  </div>
+
 
 
 </div>
