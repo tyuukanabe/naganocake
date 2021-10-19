@@ -1,0 +1,47 @@
+<h4>ショッピングカート</h4>
+<div><%= link_to "カートを空にする", cart_items_path, class: "btn btn-danger" %></div>
+<table class="table">
+  <thead>
+    <tr>
+      <td>商品名</td>
+      <td>単価(税込)</td>
+      <td>数量</td>
+      <td>小計</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <%# @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%#= attachment_image_tag cart_item.item, :image %></td>
+      <td><%#= cart_item.item_name %></td>
+      <td>
+        <div class="input-border">
+    　　<select name="product_num">
+    　　　<option value="1" selected>1個</option>
+    　　<option value="2">2個</option>
+    　　<option value="3">3個</option>
+    　　<option value="4">4個</option>
+    　　<option value="5">5個</option>
+    　　<option value="6">6個</option>
+    　　<option value="7">7個</option>
+    　　<option value="8">8個</option>
+    　　<option value="9">9個</option>
+    　　<option value="10">10個</option>
+    　　</select>
+        <%= link_to "変更", cart_items_path, class: "btn btn-success" %>
+        </div>
+      </td>
+      <td></td>
+      <td><%= link_to "削除する", cart_items_path, class: "btn btn-danger" %></td>
+    </tr>
+    <%# end %>
+  </tbody>
+</table>
+<div><%= link_to "買い物を続ける", "/", class: "btn btn-primary" %></div>
+<table>
+  <tr>
+    <td>合計金額</td>
+  </tr>
+</table>
+<div><%= link_to "情報入力に進む", class: "btn btn-success" %></div>
