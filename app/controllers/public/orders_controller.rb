@@ -56,21 +56,23 @@ class Public::OrdersController < ApplicationController
     # 全ての商品の税込価格×個数の合計
     @total_price = (@cart_items.map { |cart_item| cart_item.item.add_tax_price * cart_item.quantity }.sum ).floor
   end
+  
+  def index
+    @orders = Order.all
+  end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def complete
-  end
-
-  def index
-    @orders = Order.all
   end
 
   private
 
   def order_params
     params.require(:order).permit(:item_name, :address, :total_price)
+    
   end
 
   def address_params
