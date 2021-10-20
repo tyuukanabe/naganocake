@@ -1,0 +1,57 @@
+<h1>注文履歴詳細</h1>
+
+<h4>購入者</h4>
+<p><%= @order.customer.last_name %><%= @order.customer.first_name %></p>
+
+<h4>注文日</h4>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
+
+<h4>配送先</h4>
+<p>
+  〒<%= @order.ship_post_code %><%= @order.ship_to_address %><br>
+  <%= @order.ship_name %>
+</p>
+
+<h4>支払い方法</h4>
+<%= @order.payment_method_i18n %>
+
+<h4>注文ステータス</h4>
+<%= form_with model: [:admin, @order], local: :true do |f| %>
+  <%= f.select :order_status, Order.order_status.keys, {prompt: "入金待ち"},class: "prefecture-select" %>
+  <%= f.submit '更新'%>
+<% end %>
+
+
+<table class="table table-bordered">
+  <tr>
+    <th>商品名</th>
+	<th>単価(税込)</th>
+	<th>数量</th>
+	<th>小計</th>
+	<th>制作ステータス</th>
+  </tr>
+  <% @order.order_items.each do |order_item| %>
+  <tr>
+	<td><%= order_item.item.name %></td>
+	<!--delimitedは３桁で区切る-->
+	<td><%= (order_item.item.price * 1.1).to_s(:delimited) %></td>
+	<td><%= order_item.quantity %></td>
+	<td><%= (order_item.item.price * 1.1 * order_item.quantity).to_s(:delimited) %></td>
+  <td>
+	<%= form_with model: [:admin, @order_item], local: true do |f| %>
+	<%= f.select :sales_order_status, OrderItem.sales_order_status_i18n, {prompt: "着手不可"}, class:"form-control form-control-sm col-6"  %>
+  </td>
+  <td>
+	<%= f.submit '更新' %>
+  </td>
+  <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<h4>商品合計</h4>
+<p><%= (@order.total_due - @order.freight).to_s(:delimited) %>円</p>
+<h4>送料</h4>
+<p><%= @order.freight %>円</p>
+<h4>請求金額合計</h4>
+<p><%= @order.total_due %>円</p>
