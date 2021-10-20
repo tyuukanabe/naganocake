@@ -27,3 +27,10 @@
 <p>お届け先</p>
 <%= @order.address %>
 
+<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :total_price, value: @total %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
+

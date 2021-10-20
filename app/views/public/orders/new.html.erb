@@ -1,6 +1,6 @@
 <h5>注文情報入力</h5>
 
-<%= form_with model: @order, local: true do |f| %>
+<%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
 <h5><strong>支払い方法</strong></h5>
   <!--クレジットカード-->
   <%= f.radio_button :payment_method, 0 %>
@@ -15,6 +15,7 @@
   <%= f.radio_button :address_number, 1 %>
   <%= f.label :address_number_1, "ご自身の住所" %>
   </br>
+  <%= current_customer.post_code %>
   <%= current_customer.address %>
   <%= current_customer.full_name %>
   </br>

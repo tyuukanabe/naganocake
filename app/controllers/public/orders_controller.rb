@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
         # オーダーアイテムに保存
         order_item.save
       end
-      redirect_to 'public/orders/confirm'
+      redirect_to orders_confirm_path
       # カートを空にする
       cart_items.destroy_all
     else
