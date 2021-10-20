@@ -17,7 +17,7 @@
           <%#= cart_item.item_name %></td>
       <td>¥<%#= ((cart_item.price*1.1).round).to_s(:delimited) %></td>
       <td>
-        <%= form_with url: cart_items_path, method: :patch, local: true do |f| %>
+        <%= form_with url: cart_items_path, method: :post, local: true do |f| %>
         <%= f.select :quantity, [*1..10] %>
         <%= f.hidden_field :item_id, :value => @cart_item %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
