@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <h3 class="offset-1 my-4"><%= @customer.full_name %>さんの会員情報編集</h3>
+        <%= form_with model:@customer,url: admin_customer_path(@customer.id), local:true do |f| %>
+            <div class="row form-group">
+                <div class="offset-1 col-3 mb-3">会員ID</div>
+                <div class="col-8 mb-2"><%= @customer.id %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :氏名 %></div>
+                <div class="col-4"><%= f.text_field :last_name, class: "form-control" %></div>
+                <div class="col-4"><%= f.text_field :first_name, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :フリガナ %></div>
+                <div class="col-4"><%= f.text_field :last_name_kana, class: "form-control" %></div>
+                <div class="col-4"><%= f.text_field :first_name_kana, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :郵便番号 %></div>
+                <div class="col-8"><%= f.text_field :post_code, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :住所 %></div>
+                <div class="col-8"><%= f.text_field :address, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :電話番号 %></div>
+                <div class="col-8"><%= f.text_field :telephone, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :メールアドレス %></div>
+                <div class="col-8"><%= f.text_field :email, class: "form-control" %></div>
+                <div class="offset-1 col-3 mb-3"><%= f.label :会員ステータス %></div>
+                <%= f.radio_button :is_deleted, false, class: "custom-control custom-radio ml-3" %><%= f.label :有効, class: "pr-3" %>
+                <%= f.radio_button :is_deleted, true, class: "custom-control custom-radio" %><%= f.label :退会 %>
+                <div class="col-12"></div>
+                <div class="offset-1 col-3 mb-3"></div>
+                <%= f.submit "変更を保存", class: "btn btn-success ml-3" %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
