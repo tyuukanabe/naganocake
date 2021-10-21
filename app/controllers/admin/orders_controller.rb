@@ -1,15 +1,15 @@
 class Admin::OrdersController < ApplicationController
-    
+
     def index
         @orders = Order.page(params[:page]).per(10).order(created_at: 'DESC')
         # .order(created_at: 'DESC')降順に並び替え
     end
-    
+
     def show
         @order = Order.find(params[:id])
-        @order_item = OrderItem.all
+        @order_items = OrderItem.all
     end
-    
+
     def update
         @order = Order.find(params[:id])
         @order.update(order_params)
