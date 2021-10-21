@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'genres/show'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customer,skip: [:passwords,], controllers: {
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
     resources :customers, except: [:destroy]
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
+    resources :genres, only: [:show]
     patch 'unsubscribe' => 'customers#unsubscribe'
     get 'confirm' => 'customers#confirm'
     resources :items, only: [:index, :show]

@@ -1,5 +1,5 @@
-<div class="col-sm-4">
-  <table>
+
+  <table class="table table-hover table-inverse">
     <thead>
      <tr>
       <th>ジャンル</th>
@@ -9,7 +9,7 @@
       <tr>
         <% genres.each do |genre| %>
         <td>
-          <%= link_to items_path(genre.id) do%>
+          <%= link_to genre_path(genre) do %>
           <%= genre.genre_name %>
           <% end %>
           </td>
@@ -18,4 +18,3 @@
     </tbody>
   </table>
 
-</div>

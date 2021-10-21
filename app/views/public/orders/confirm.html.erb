@@ -11,10 +11,10 @@
   <tbody>
     <% @cart_items.each do |cart| %>
     <tr>
-      <td><%= cart.item.name %></td>
-      <td><%= cart.item.add_tax_price %></td>
-      <td><%= cart.item.quantity %></td>
-      <td><%= (cart.item.add_tax_price*cart.item.quantity) %></td>
+      <td><%= cart.item.item_name %></td>
+      <td>¥ <%= cart.item.add_tax_price %></td>
+      <td><%= cart.cart_item.quantity %></td>
+      <!--<td>< %= (cart.item.add_tax_price*cart.item.quantity).floor %></td>-->
     </tr>
     <% end %>
   </tbody>
@@ -25,11 +25,11 @@
 <%= @total_price %>
 
 <p>お届け先</p>
-<%= @order.address %>
+<%= @order.ship_to_address %>
 
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :funame %>
-  <%= f.hidden_field :address %>
+  <%= f.hidden_field :full_name %>
+  <%= f.hidden_field :ship_to_address %>
   <%= f.hidden_field :total_price, value: @total_price %>
   <%= f.submit "注文を確定する" %>
 <% end %>
