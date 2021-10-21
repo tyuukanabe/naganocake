@@ -34,9 +34,9 @@
   <tr>
 	<td><%= order_item.item.name %></td>
 	<!--delimitedは３桁で区切る-->
-	<td><%= (order_item.item.price * 1.1).to_s(:delimited) %></td>
+	<td><%= ((order_item.item.price * 1.1).floor).to_s(:delimited) %></td>
 	<td><%= order_item.quantity %></td>
-	<td><%= (order_item.item.price * 1.1 * order_item.quantity).to_s(:delimited) %></td>
+	<td><%= (((order_item.item.price * 1.1).floor) * order_item.quantity)).to_s(:delimited) %></td>
   <td>
 	<%= form_with model: [:admin, @order_item], local: true do |f| %>
 	<%= f.select :sales_order_status, OrderItem.sales_order_status_i18n, {prompt: "着手不可"}, class:"form-control form-control-sm col-6"  %>
