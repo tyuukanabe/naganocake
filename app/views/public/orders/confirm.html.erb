@@ -15,7 +15,6 @@
       <td>¥ <%= (cart.item.add_tax_price).to_s(:delimited) %></td>
       <td><%= cart.quantity %></td>
       <td><%= ((cart.item.price * 1.1).floor * cart.quantity).to_s(:delimited) %></td>
-      <!--<td>< %= (cart.item.add_tax_price*cart.item.quantity).floor %></td>-->
     </tr>
     <% end %>
   </tbody>
@@ -26,7 +25,7 @@
 <p>商品合計</p>
 <%= @total_price.to_s(:delimited) %>
 <p>ご請求金額</p>
-<%= ((@total_price) + (@order.freight)).to_s(:delimited)%>
+<%= ((@total_price) + (@order.freight)).to_s(:delimited) %>
 <p>支払い方法</p>
 <%= @order.payment_method_i18n %>
 
