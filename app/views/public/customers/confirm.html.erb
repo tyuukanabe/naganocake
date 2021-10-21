@@ -1,8 +1,10 @@
-<strong class="text_center">本当に退会しますか？</strong>
-<p class="text_center">
+<p class="text-center mt-5"><strong>本当に退会しますか？</strong></p>
+<p class="text-center">
 退会すると、会員登録情報や</br>
 これまでの購入履歴が閲覧できなくなります。</br>
 退会する場合は、「退会する」をクリックしてください。
 </p>
-<%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary" %>
-<%= link_to "退会する", unsubscribe_path, method: :patch, class: "btn btn-danger" %>
+<div class="d-flex justify-content-center">
+    <%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary mr-1" %>
+    <%= link_to "退会する", unsubscribe_path, method: :patch, class: "btn btn-danger ml-1" %>
+</div>

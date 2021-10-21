@@ -21,12 +21,15 @@
   </tbody>
 </table>
 
-<p>送料</p>
-<%= @order.freight %>
+<p>送料</br>
+<%= @order.freight %></p>
 <p>商品合計</p>
 <%= @total_price.to_s(:delimited) %>
 <p>ご請求金額</p>
 <%= ((@total_price) + (@order.freight)).to_s(:delimited)%>
+<p>支払い方法</p>
+<%= @order.payment_method_i18n %>
+
 
 <p>支払方法</p>
 <%= @order.payment_method_i18n %>
@@ -34,9 +37,11 @@
 <%= @order.ship_to_address %>
 
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :full_name %>
-  <%= f.hidden_field :ship_to_address %>
-  <%= f.hidden_field :total_price, value: @total_price %>
+  <%= f.hidden_field :ship_name, value: @order.ship_name %>
+  <%= f.hidden_field :ship_to_address, value: @order.ship_to_address %>
+  <%= f.hidden_field :ship_post_code, value: @order.ship_post_code  %>
+  <%= f.hidden_field :payment_method, value: @order.payment_method  %>
+  <%= f.hidden_field :total_due, value: @order.total_due %>
   <%= f.submit "注文を確定する" %>
 <% end %>
 

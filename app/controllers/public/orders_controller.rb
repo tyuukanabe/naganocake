@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
     # 全ての商品の税込価格×個数の合計
     @total_price = (@cart_items.map { |cart_item| cart_item.item.add_tax_price * cart_item.quantity }.sum ).floor
     @order.freight = 800
-    @order.payment_method
+    @order.payment_method = params[:order][:payment_method]
     @order.total_due = @total_price + @order.freight
     # @order.order_status = current_customer.cart_item.order_status
 
@@ -48,26 +48,23 @@ class Public::OrdersController < ApplicationController
 
 
   def create
-    cart_items = current_customer.cart_items.all
-    @order = current_customer.orders.new(order_params)
-    if @order.save
-      # カートアイテムをオーダーアイテムに１商品ずつ移す
-      cart_items.each do |cart|
-        order_item = OderItem.new
-        order_item.order_id = @order.id
-        order_item.item_id = cart.item_id
-        order_item.quantity = cart.cart_item.quantity
-        order_item.purchase_price = cart.item.add_tax_price
-        # オーダーアイテムに保存
-        order_item.save
-      end
-      redirect_to orders_confirm_path
-      # カートを空にする
-      cart_items.destroy_all
-    else
-      @order = Order.new(order_params)
-      render :new
+    # cart_items = current_customer.cart_items.all
+    order = current_customer.orders.new(order_params)
+    order.save
+    # カートアイテムをオーダーアイテムに１商品ずつ移す
+    current_customer.cart_items.each do |cart|
+      order_item = order.order_items.new
+      order_item.item_id = cart.item_id
+      order_item.quantity = cart.quantity
+      order_item.purchase_price = cart.item.add_tax_price
+      # オーダーアイテムに保存
+      order_item.save
     end
+    # カートを空にする
+    current_customer.cart_items.destroy_all
+    redirect_to orders_complete_path
+
+
   end
 
   def index
@@ -84,7 +81,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :freight, :payment_method, :ship_post_code, :ship_to_address, :ship_name, :total_due, :order_status)
+    params.require(:order).permit(:payment_method, :ship_post_code, :ship_to_address, :ship_name, :total_due)
 
   end
 
