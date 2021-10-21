@@ -17,7 +17,7 @@
 
 <h4>注文ステータス</h4>
 <%= form_with model: [:admin, @order], local: :true do |f| %>
-  <%= f.select :order_status, Order.order_status.keys, {prompt: "入金待ち"},class: "prefecture-select" %>
+  <!--< %= f.select :order_status, Order.order_status.keys, {prompt: "入金待ち"},class: "prefecture-select" %>-->
   <%= f.submit '更新'%>
 <% end %>
 
@@ -32,7 +32,7 @@
   </tr>
   <% @order.order_items.each do |order_item| %>
   <tr>
-	<td><%= order_item.item.name %></td>
+	<td><%= order_item.item.item_name %></td>
 	<!--delimitedは３桁で区切る-->
 	<td><%= (order_item.item.price * 1.1).to_s(:delimited) %></td>
 	<td><%= order_item.quantity %></td>
