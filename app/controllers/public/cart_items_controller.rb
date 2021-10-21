@@ -9,7 +9,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = current_customer.cart_items.new(cart_item_params)
      if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
        cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-       cart_item.quantity += params[:cart_item][:quantity]
+       cart_item.quantity += params[:cart_item][:quantity].to_i
        cart_item.save
      end
     @cart_item.save
