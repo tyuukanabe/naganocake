@@ -13,16 +13,20 @@
     <tr>
       <td><%= cart.item.item_name %></td>
       <td>¥ <%= cart.item.add_tax_price %></td>
-      <td><%= cart.cart_item.quantity %></td>
+      <td><%= cart.quantity %></td>
+      <td><%= ((cart.item.price * 1.1).floor * cart.quantity).to_s(:delimited) %></td>
       <!--<td>< %= (cart.item.add_tax_price*cart.item.quantity).floor %></td>-->
     </tr>
     <% end %>
   </tbody>
 </table>
 
-
+<p>送料</p>
+<%= @order.freight %>
+<p>商品合計</p>
+<%= @total_price.to_s(:delimited) %>
 <p>ご請求金額</p>
-<%= @total_price %>
+<%= ((@total_price) + (@order.freight)).to_s(:delimited)%>
 
 <p>お届け先</p>
 <%= @order.ship_to_address %>
