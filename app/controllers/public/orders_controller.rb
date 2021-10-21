@@ -63,20 +63,20 @@ class Public::OrdersController < ApplicationController
     # カートを空にする
     current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
-
-
+  end
+  
+  def complete
   end
 
   def index
-    @orders = Order.all
+    @cart_items= CartItem.all  
+    @orders = current_customer.orders.page(params[:page]).per(5).reverse_order
   end
 
   def show
     @order = Order.find(params[:id])
   end
 
-  def complete
-  end
 
   private
 
