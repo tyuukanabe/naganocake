@@ -18,7 +18,7 @@
       <td><%= cart_item.item.item_name %></td>
       <td>¥<%= (cart_item.item.add_tax_price) %></td>
       <td>
-        <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+        <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
         <%= f.select :quantity, [*1..10], selected: cart_item.quantity %>
         <%= f.hidden_field :item_id, :value => cart_item.item_id %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
