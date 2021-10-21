@@ -26,14 +26,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    @cart_items= current_customer.cart_items
+    @cart_item= current_customer.cart_items.find_by(params[:id])
     @cart_item = @cart_items.find_by(item_id: params[:item_id])
     @cart_item.update(quantity: params[:quantity])
      redirect_to cart_items_path
   end
 
   def destroy
-    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
      redirect_to cart_items_path
   end

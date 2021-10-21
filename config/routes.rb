@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   namespace :public do
     get 'genres/show'
   end
+  get 'search' => 'searches#search'
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customer,skip: [:passwords,], controllers: {
