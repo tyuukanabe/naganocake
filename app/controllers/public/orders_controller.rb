@@ -82,7 +82,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.page(params[:page]).per(5).reverse_order
-
   end
 
   def show

@@ -17,8 +17,8 @@
       <%= order.ship_name %>
     </td>
     <td>
-      <% order.items.each do |item| %>
-        <%= item.item_name %><br>
+      <% order.order_items.each do |order_item| %>
+        <%= order_item.item.item_name %><br>
     　<% end %>
     </td>
     <td><%= order.total_due %></td>
