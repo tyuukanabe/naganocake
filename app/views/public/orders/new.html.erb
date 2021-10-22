@@ -21,25 +21,25 @@
   </br>
 
   <!--登録されたaddress-->
-  <!--<%= f.radio_button :address_number, 2 %>-->
-  <!--<%= f.label :address_number_2, "登録先の住所" %>-->
-  <!--</br>-->
-  <!--<%= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>-->
-  <!--</br>-->
+  <%= f.radio_button :address_number, "2" %>
+  <%= f.label :address_number_2, "登録先の住所" %>
+  </br>
+  <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address) %>
+  </br>
 
   <!--新しい住所追加-->
-  <!--<%= f.radio_button :address_number, 3 %>-->
-  <!--<%= f.label :address_number_3, "新しいお届け先" %>-->
-  <!--</br>-->
-  <!--<%= f.label :ship_post_code, "郵便番号（ハイフンなし）" %>-->
-  <!--<%= f.text_field :ship_post_code %>-->
-  <!--</br>-->
-  <!--<%= f.label :ship_to_address, "住所" %>-->
-  <!--<%= f.text_field :ship_to_address %>-->
-  <!--</br>-->
-  <!--<%= f.label :ship_name, "宛名" %>-->
-  <!--<%= f.text_field :ship_name %>-->
-  <!--</br>-->
+  <%= f.radio_button :address_number, "3" %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  </br>
+  <%= f.label :post_code, "郵便番号（ハイフンなし）" %>
+  <%= f.text_field :post_code %>
+  </br>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  </br>
+  <%= f.label :name, "宛名" %>
+  <%= f.text_field :name %>
+  </br>
 
   <%= f.submit "確認画面へ進む", class: "btn btn-success" %>
 
