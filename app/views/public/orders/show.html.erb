@@ -50,9 +50,9 @@
   <% @order.order_items.each do |order_item| %>
   <tr>
     <td><%= order_item.item.item_name %></td>
-    <td><%= (order_item.item.price * 1.1).to_s(:delimited) %><</td>
+    <td><%= ((order_item.item.price * 1.1).floor).to_s(:delimited) %><</td>
     <td><%= order_item.quantity %></td>
-    <td><%= ((order_item.item.price * 1.1) * order_item.quantity).to_s(:delimited) %></td>
+    <td><%= (((order_item.item.price * 1.1).floor) * order_item.quantity).to_s(:delimited) %></td>
   </tr>
 　<% end %>
 </table>
