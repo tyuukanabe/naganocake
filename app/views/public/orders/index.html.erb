@@ -17,12 +17,12 @@
       <%= order.ship_name %>
     </td>
     <td>
-      <% order.items.each do |item| %>
-        <%= item.item_name %><br>
+      <% order.order_items.each do |order_item| %>
+        <%= order_item.item.item_name %><br>
     　<% end %>
     </td>
     <td><%= order.total_due %></td>
-    <td><%= order.order_status %></td>
+    <td><%= order.order_status_i18n %></td>
     <td><%= link_to '表示する', order_path(order) %></td>
   </tr>
     <% end %>
