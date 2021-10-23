@@ -39,7 +39,7 @@
 	<td><%= (((order_item.item.price * 1.1).floor) * order_item.quantity).to_s(:delimited) %></td>
   <td>
 	<%= form_with model: order_item, url: admin_order_order_item_path(order_item), local: true do |f| %>
-	<%= f.select :sales_order_statuses, OrderItem.sales_order_statuses.keys.map { |k| [I18n.t("enums.order_item.sales_order_status.#{k}"), k] }, class:"form-control form-control-sm col-6"  %>
+	<%= f.select :sales_order_statuses, OrderItem.sales_order_statuses.keys.map { |k| [I18n.t("enums.order_item.sales_order_status.#{k}"), k] }, class:"form-control form-control-sm col-6" %>
   </td>
   <td>
 	<%= f.submit '更新' %>
