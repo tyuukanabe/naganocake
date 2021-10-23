@@ -17,6 +17,9 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <% if customer_signed_in? %>
+             <span style="color:white">ようこそ<%= current_customer.last_name %><%= current_customer.first_name %>さん！</span>
+            <% end %>
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
                 <li><%= link_to "マイページ", customer_path(current_customer), class: 'nav-link active' %></li>
