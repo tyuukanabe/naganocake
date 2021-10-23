@@ -14,13 +14,25 @@ class Public::OrdersController < ApplicationController
     @order.freight = 800
     @order.payment_method = params[:order][:payment_method]
     @order.total_due = @total_price + @order.freight
-    # @order.order_status = current_customer.cart_item.order_status
+    @order.order_status = 0
 
 
-    params[:order][:address_number] 
-    @order.ship_post_code = current_customer.post_code
-    @order.ship_name = current_customer.full_name
-    @order.ship_to_address = current_customer.address
+    if params[:order][:address_number] == "1"
+      @order.ship_post_code = current_customer.post_code
+      @order.ship_name = current_customer.full_name
+      @order.ship_to_address = current_customer.address
+    elsif params[:order][:address_number] == "2"
+      @order.ship_post_code = Address.find(params[:order][:registered]).post_code
+      @order.ship_name = Address.find(params[:order][:registered]).name
+      @order.ship_to_address = Address.find(params[:order][:registered]).address
+    elsif params[:order][:address_number] == "3"
+      address_new = current_customer.addresses.new(address_params)
+      address_new.save
+      @order.ship_post_code = address_new.post_code
+      @order.ship_name = address_new.name
+      @order.ship_to_address = address_new.address
+    end
+
 
     # 郵送先をif文で確認
     # if params[:order][:address_number] == "1"
@@ -64,12 +76,11 @@ class Public::OrdersController < ApplicationController
     current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
   end
-  
+
   def complete
   end
 
   def index
-    @cart_items= CartItem.all  
     @orders = current_customer.orders.page(params[:page]).per(5).reverse_order
   end
 
@@ -80,14 +91,12 @@ class Public::OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order).permit(:payment_method, :ship_post_code, :ship_to_address, :ship_name, :total_due, :order_status)
-
-  end
-
   def address_params
-    params.require(:order).permit(:ship_name, :ship_to_address, :ship_post_code)
+    params.require(:order).permit(:name, :address, :post_code)
   end
 
+  def order_params
+    params.require(:order).permit(:payment_method, :ship_post_code, :ship_to_address, :ship_name, :total_due, :order_status, :freight)
+  end
 
 end
