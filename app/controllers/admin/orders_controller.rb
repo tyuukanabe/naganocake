@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
         @order = Order.find(params[:id])
         @order.update(order_params)
          if  @order.order_status == "check"
-             @order.order_items.update_all(sales_order_status: OrderItem.sales_order_status[:wait])
+             @order.order_items.update_all(sales_order_status: OrderItem.sales_order_statuses[:wait])
          end
         redirect_to admin_order_path(@order)
     end
