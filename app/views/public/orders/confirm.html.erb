@@ -38,9 +38,11 @@
 <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
   <%= f.hidden_field :ship_name, value: @order.ship_name %>
   <%= f.hidden_field :ship_to_address, value: @order.ship_to_address %>
-  <%= f.hidden_field :ship_post_code, value: @order.ship_post_code  %>
-  <%= f.hidden_field :payment_method, value: @order.payment_method  %>
+  <%= f.hidden_field :ship_post_code, value: @order.ship_post_code %>
+  <%= f.hidden_field :payment_method, value: @order.payment_method %>
   <%= f.hidden_field :total_due, value: @order.total_due %>
+  <%= f.hidden_field :order_status, value: @order.order_status %>
+  <%= f.hidden_field :freight, value: @order.freight %>
   <%= f.submit "注文を確定する" %>
 <% end %>
 
