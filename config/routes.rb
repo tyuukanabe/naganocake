@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :genres, except: [:destroy, :show, :new]
     get '/' => 'homes#top'
     resources:orders, only: [:index, :show, :update] do
-      resource:order_items, only: [:update]
+      resources:order_items, only: [:update]
     end
   end
 
