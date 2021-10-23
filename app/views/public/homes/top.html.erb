@@ -1,15 +1,20 @@
 
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="<%= asset_path('about_kari.jpg') %>" alt="First slide">
+          <img class="d-block w-100" src="<%= asset_path('about_kari.jpg') %>", height="500px", alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('no_image.png') %>" alt="Second slide">
+          <img class="d-block w-100" src="<%= asset_path('no_image.png') %>", height="500px", alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('about_kari.jpg') %>" alt="Third slide">
+          <img class="d-block w-100" src="<%= asset_path('about_kari.jpg') %>", height="500px", alt="Third slide">
         </div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="text-left">First slide label</h3>
+        <p class="text-left">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,23 +24,28 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+          
     </div>
 
 
-<div class="container px-5 px-sm-0">
-
-    <h3 class="text-center">新着商品</h3>
-
+<div class="container-fluid px-5 px-sm-3 mt-5">
    <div class="row">
-     <div class="col-md-3">
-       <%= render 'public/homes/genres', genres: @genres %>
-     </div>
+    <div class="col-3">
+        <div class="sidebar_content">
+          <%= render 'public/homes/genres', genres: @genres %>
+        </div>
+    </div>
 
+    <div class="col-9">
+      <h3 class="text-center">新着商品</h3>
+    <div class="row">
     <% @items.each do |item| %>
-        <div class="col-md-4">
-            <div class="w-50 mx-auto mt-4">
+        <div class="col-md-3">
+            <div class="mx-auto mt-4">
+              <div class="card-deck">
+              <div class="card">
               <%= link_to item_path(item.id) do %>
-                <%= attachment_image_tag item, :image, :fill, 250, 160, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag item, :image, :fill, 250, 160, fallback: "no_image.jpg", class: "card-img-top" %>
               <% end %>
               <div class="card-body">
                 <p class="card-title">
@@ -43,13 +53,18 @@
                     <strong><i class="far fa-flag"></i><span> <%= item.item_name %></span></strong>
                   <% end %>
                 </p>
-                <p>¥ <%= item.price %>円</p>
+                <p class="card-text">¥ <%= item.price %>円</p>
               </div>
             </div>
+          </div>
+          </div>
         </div>
     <% end %>
 </div>
+<div class="text-right">
 <%= link_to "全ての商品を見る >", items_path %>
-
+</div>
+</div>
+</div>
 
 </div>
