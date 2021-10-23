@@ -13,9 +13,9 @@ class Admin::OrdersController < ApplicationController
     def update
         @order = Order.find(params[:id])
         @order.update(order_params)
-        if　@order.status == "check"
-            @order.order_items.update_all(sales_order_status: OrderItem.sales_order_status[:wait])
-    　　end
+         if  @order.order_status == "check"
+             @order.order_items.update_all(sales_order_status: OrderItem.sales_order_status[:wait])
+         end
         redirect_to admin_order_path(@order)
     end
 
@@ -24,4 +24,3 @@ class Admin::OrdersController < ApplicationController
         params.require(:order).permit(:customer_id, :freight, :payment_method, :ship_post_code, :ship_to_address, :ship_name, :total_due, :order_status)
     end
 end
-
