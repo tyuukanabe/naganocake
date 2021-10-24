@@ -23,13 +23,23 @@
  padding: 0px;
 }
 
-header {
- background-color: grey;
+html, body {
+ height: 100%;
 }
 
-body {
- height: 100%;
- position: relative;
+header {
+ background-color: grey;
+ opacity: 0.6;
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+.blank{
+ height: 50px;
 }
 
 footer {
@@ -38,4 +48,5 @@ footer {
  position: absolute;
  bottom: 0;
  background-color: grey;
+ opacity: 0.6;
 }
