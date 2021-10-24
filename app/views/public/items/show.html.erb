@@ -13,7 +13,7 @@
     <div class="col-md-5">
     <h2><%= @item.item_name %></h2>
     <p><%= @item.introduction %></p>
-    <p>¥ <%= @item.add_tax_price %>(税込)</p>
+    <p>¥ <%= @item.add_tax_price.to_s(:delimited) %>(税込)</p>
 
     <% if customer_signed_in? %>
       <% unless @item.is_status == false %>
