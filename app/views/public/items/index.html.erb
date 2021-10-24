@@ -1,17 +1,18 @@
 
 <div class="container-fluid px-5 px-sm-3 mt-4">
 <h3 class="text-center">商品一覧<small>(全 <%= @items.count %>件)</small></h3>
+<div class="mx-auto border-bottom my-3 col-md-9"></div> <!--下ボーダー -->
 
 
 <div class="row">
 
-<div class="col-3">
+<div class="col-md-2">
 
     <%= render 'public/homes/genres', genres: @genres %>
 
 </div>
 
-    <div class="col-9">
+    <div class="col-md-10">
     <div class="row">
     <% @items.each do |item| %>
         <div class="col-md-3">
@@ -28,7 +29,7 @@
                         <strong><i class="far fa-flag"></i><span> <%= item.item_name %></span></strong>
                     <% end %>
                 </p>
-                <p class="card-text">>¥ <%= item.price %>円</p>
+                <p class="card-text">¥ <%= item.price.to_s(:delimited) %></p>
               </div>
             </div>
           </div>
@@ -40,3 +41,4 @@
     <%= paginate @items %>
 </div>
 </div>
+<div class="blank"></div>

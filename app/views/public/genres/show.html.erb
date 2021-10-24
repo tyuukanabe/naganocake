@@ -1,16 +1,22 @@
-<%= render 'public/homes/genres', genres: @genres %>
+<div class="container-fluid px-5 px-sm-3 mt-4">
+<h3 class="text-center"><%= @genre.genre_name %>一覧<small>(全 <%= @genre.items.count %>件)</small></h3>
 
-
-
-<h2><%= @genre.genre_name %>一覧</h2>
-<p>(全 <%= @genre.items.count %>件)</p>
 
 <div class="row">
+
+<div class="col-md-2">
+    <%= render 'public/homes/genres', genres: @genres %>
+</div>
+
+    <div class="col-md-10">
+    <div class="row">
     <% @genre_items.each do |item| %>
-        <div class="col-md-4">
-            <div class="w-50 mx-auto mt-4">
+         <div class="col-md-3">
+            <div class="mx-auto mt-4">
+              <div class="card-deck">
+              <div class="card">
               <%= link_to item_path(item.id) do %>
-                <%= attachment_image_tag item, :image, :fill, 250, 160, fallback: "no_image.jpg" %>
+                <%= attachment_image_tag item, :image, :fill, 250, 160, fallback: "no_image.jpg", class: "card-img-top" %>
               <% end %>
               <div class="card-body">
                 <p class="card-title">
@@ -18,10 +24,15 @@
                         <strong><i class="far fa-flag"></i><span> <%= item.item_name %></span></strong>
                     <% end %>
                 </p>
-                <p>¥ <%= item.price %>円</p>
+                <p>¥ <%= item.price.to_s(:delimited) %></p>
               </div>
             </div>
+          </div>
+          </div>
         </div>
     <% end %>
+    </div>
+    </div>
     <%= paginate @genre_items %>
+</div>
 </div>
