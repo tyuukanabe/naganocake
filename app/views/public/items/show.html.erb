@@ -1,18 +1,16 @@
-<div class="container-fluid px-5 px-sm-3 mt-5">
+<div class="container px-5 px-sm-3 mt-5">
    <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
 
           <!--render(ジャンル)-->
           <%= render 'public/homes/genres', genres: @genres %>
       </div>
 
-    <div class="col-md-9">
-    <div class="row">
-    <div class="col-md-3">
-    <%= attachment_image_tag @item, :image, :fill, 200, 120, fallback: "no_image.jpg" %>
+    <div class="col-md-5">
+    <%= attachment_image_tag @item, :image, :fill, 350, 250, fallback: "no_image.jpg", class:"rounded" %>
   </div>
 
-    <div class="col-md-9">
+    <div class="col-md-5">
     <h2><%= @item.item_name %></h2>
     <p><%= @item.introduction %></p>
     <p>¥ <%= @item.add_tax_price %>(税込)</p>
@@ -31,7 +29,6 @@
         <h4>申し訳ありません。販売中止中です</h4>
       <% end %>
     <% end %>
-  </div>
   </div>
 
 
