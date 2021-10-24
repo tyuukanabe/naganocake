@@ -1,37 +1,46 @@
-<div class='container'>
+<div class="container">
   <h3 class="my-3">商品詳細</h3>
-  <div class='row'>
+  <div class="row">
     <div class="col-lg-4 col-md-12 mx-auto">
       <%= attachment_image_tag @item, :image, :fill,300,200  %>
     </div>
     <div class="col-lg-8 col-md-12 mx-auto">
-      <div class='row'>
-        <p class="col-4">商品名</p>
-        <p class="col-8"><%= @item.item_name %></p>
-      </div>
-      <div class='row'>
-        <p class="col-4">商品説明</p>
-        <p class="col-8"><%= @item.introduction %></p>
-      </div>
-      <div class='row'>
-        <p class="col-4">ジャンル</p>
-        <p class="col-8"><%= @item.genre.genre_name %></p>
-      </div>
-      <div class='row'>
-        <p class="col-4">税込価格（税抜価格）</p>
-        <p class="col-8"><%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</p>
-      </div>
-      <div class='row'>
-        <p class="col-4">販売ステータス</p>
-        <% if @item.is_status == true %>
-        <p class="col-8">販売中</p>
-        <% else %>
-        <p class="col-8">販売停止</p>
-        <% end %>
-      </div>
-      <div class='row'>
-        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
-      </div>
+      <table class="table table-borderless">
+        <tr>
+          <th>商品名</th>
+          <td><%= @item.item_name %></td>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td><%= @item.genre.genre_name %></td>
+        </tr>
+        <tr>
+          <th>税込価格<br>（税抜価格）</th>
+          <td><%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</td>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <td><% if @item.is_status == true %>販売中<% else %>販売停止<% end %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success center-block " %>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
