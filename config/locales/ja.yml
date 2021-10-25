@@ -12,7 +12,7 @@ ja:
         check: "入金確認"
         making: "製作中"
         prepare: "発送準備中"
-        shipping: "発送中"
+        shipped: "発送済み"
 
 
     order_item:
