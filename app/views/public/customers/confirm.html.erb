@@ -1,12 +1,16 @@
-<div class="cover">
-    <p class="text-center pt-5"><strong>本当に退会しますか？</strong></p>
-    <p class="text-center">
-    退会すると、会員登録情報や</br>
-    これまでの購入履歴が閲覧できなくなります。</br>
-    退会する場合は、「退会する」をクリックしてください。
-    </p>
-    <div class="d-flex justify-content-center">
-        <%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary mr-1" %>
-        <%= link_to "退会する", unsubscribe_path, method: :patch, data: {confirm: "退会しますか？"}, class: "btn btn-danger ml-1" %>
+<div class="cover ">
+    <div class="d-flex align-items-center justify-content-center" style="height:500px;">
+        <div>
+            <p class="text-center"><strong>本当に退会しますか？</strong></p>
+            <p class="text-center">
+            退会すると、会員登録情報や</br>
+            これまでの購入履歴が閲覧できなくなります。</br>
+            退会する場合は、「退会する」をクリックしてください。
+            </p>
+            <div class="d-flex justify-content-center">
+                <%= link_to "退会しない", customer_path(current_customer.id), class: "btn btn-primary mr-1" %>
+                <%= link_to "退会する", unsubscribe_path, method: :patch, data: {confirm: "退会しますか？"}, class: "btn btn-danger ml-1" %>
+            </div>
+        </div>
     </div>
 </div>
