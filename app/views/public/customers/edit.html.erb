@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
-    <h3 class="offset-1 my-3">会員情報編集</h3>
+    <!--<h3 class="offset-1 my-3">会員情報編集</h3>-->
+    <div class="col-md-12 col-sm-12 mx-2 mx-sm-auto rounded px- my-5">
+     <h4>会員情報編集</h4>
     <%= form_with model:@customer, local:true do |f| %>
-     <div class ="row">
+     <div class ="row my-4">
   <div class="offset-1 col-2"><%= f.label :"氏名" %></div>
   <div class="col-4 mb-2"><%= f.text_field :last_name,class: "form-control" %></div>
   <div class="col-4 mb-2"><%= f.text_field :first_name,class: "form-control" %></div>
@@ -23,7 +25,7 @@
   <%= link_to "退会する", confirm_path, class: "btn btn-danger" %>
  </div>
 <% end %>
-
+   </div>
  </div>
 </div>
 
