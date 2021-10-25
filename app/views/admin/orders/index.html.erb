@@ -16,7 +16,13 @@
           <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
           <!--quantityは３桁で区切る-->
           <td><%= order.order_items.sum(:quantity) %></td>
-          <td><%= order.order_status_i18n %></td>
+          <td>
+            <%if order.order_status == "shipped" %>
+              <div class="text-success"><%= order.order_status_i18n %></div>
+            <% else %>
+              <%= order.order_status_i18n %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
