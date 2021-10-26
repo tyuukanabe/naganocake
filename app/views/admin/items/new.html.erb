@@ -1,4 +1,8 @@
 <div class='container'>
+  
+  <% if @item.errors.any? %>
+       <p class="my-3 text-danger">空白を埋めてください！！！</p>
+  <% end %>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
       <h3 class="my-3">商品新規登録</h3>
@@ -40,8 +44,3 @@
     </div>
 　</div>
 </div>
-
-
-
-
-
