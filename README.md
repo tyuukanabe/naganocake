@@ -6,9 +6,8 @@ DMM WEBCAMPのチーム開発課題です。
 # 設計図
 
 ### ・ER図は[こちら](https://drive.google.com/file/d/1CseqlieC3RVMwD06XJy4RCwh6yJE7rwP/view?usp=sharing)から
-
-* Ruby version
-
+### ・テーブル設計図は[こちら](https://drive.google.com/file/d/1CseqlieC3RVMwD06XJy4RCwh6yJE7rwP/view?usp=sharing)から
+### ・アプリケーション詳細設計書は[こちら](https://docs.google.com/spreadsheets/d/1stNAiUbfw087V6uJi99C5hNpvmy46xlaPfmZls96aaw/edit?usp=sharing)
 * System dependencies
 
 * Configuration
