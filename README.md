@@ -40,7 +40,7 @@ DMM WEBCAMPのチーム開発課題です。
 # 使用言語
 ● Ruby2.6.3</br>
 ● Rails5.2.5</br>
-● HTML5
+● HTML5</br>
 ● Ruby Sass 3.7.4
 
 
