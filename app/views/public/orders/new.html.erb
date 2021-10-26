@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <h3 class="offset-1 my-3">注文情報入力</h3>
@@ -15,6 +16,9 @@
 
 
         <h5><strong>お届け先</strong></h5>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:p, value, class: "alert alert-danger") %>
+        <% end %>
           <!--customerの登録住所-->
           <%= f.radio_button :address_number, "1" %>
           <%= f.label :address_number_1, "ご自身の住所" %>
