@@ -36,3 +36,12 @@ DMM WEBCAMPのチーム開発課題です。
 ### ・ER図は[こちら](https://drive.google.com/file/d/1CseqlieC3RVMwD06XJy4RCwh6yJE7rwP/view?usp=sharing)から
 ### ・テーブル設計図は[こちら](https://drive.google.com/file/d/1CseqlieC3RVMwD06XJy4RCwh6yJE7rwP/view?usp=sharing)から
 ### ・アプリケーション詳細設計書は[こちら](https://docs.google.com/spreadsheets/d/1stNAiUbfw087V6uJi99C5hNpvmy46xlaPfmZls96aaw/edit?usp=sharing)から
+
+# 使用言語
+● Ruby2.6.3</br>
+● Rails5.2.5</br>
+● HTML5
+● Ruby Sass 3.7.4
+
+
+
