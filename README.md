@@ -43,5 +43,9 @@ DMM WEBCAMPのチーム開発課題です。
 ● HTML5</br>
 ● Ruby Sass 3.7.4
 
-
+# チームメンバー
+●　kaichi0618(カミ)</br>
+●　kuroyuma(クロユマ)</br>
+●　fukusy(ちんぱん)</br>
+●　maisoncnry12(カナリン)
 
