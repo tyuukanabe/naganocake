@@ -3,7 +3,11 @@
 DMM WEBCAMPのチーム開発課題です。
 架空の洋菓子店「ながのCAKE」の商品を通販するためのECサイトを作成しました。
 
-Things you may want to cover:
+#設計図
+
+###　ER図はこちらから(h3)
+・
+・
 
 * Ruby version
 
