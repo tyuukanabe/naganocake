@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <h3 class="offset-2 col-10 my-4"><%= @customer.full_name %>さんの会員詳細</h3>
+        <div class="col-3 offset-2 mb-2">会員ID</div>
+        <div class="col-7 mb-2"><%= @customer.id %></div>
+        <div class="col-3 offset-2 mb-2">氏名</div>
+        <div class="col-7 mb-2"><%= @customer.full_name %></div>
+        <div class="col-3 offset-2 mb-2">フリガナ</div>
+        <div class="col-7 mb-2"><%= @customer.full_name_kana %></div>
+        <div class="col-3 offset-2 mb-2">郵便番号</div>
+        <div class="col-7 mb-2"><%= @customer.post_code %></div>
+        <div class="col-3 offset-2 mb-2">住所</div>
+        <div class="col-7 mb-2"><%= @customer.address %></div>
+        <div class="col-3 offset-2 mb-2">電話番号</div>
+        <div class="col-7 mb-2"><%= @customer.telephone %></div>
+        <div class="col-3 offset-2 mb-2">メールアドレス</div>
+        <div class="col-7 mb-2"><%= @customer.email %></div>
+        <div class="col-3 offset-2 mb-2">会員ステータス</div>
+        <div class="col-7 mb-2">
+            <%if @customer.is_deleted %>
+                <p class="text-danger">退会</p>
+            <% else %>
+                <p class="text-success">有効</p>
+            <% end %>
+        </div>
+        <%= link_to "編集する",edit_admin_customer_path(@customer.id), class: "offset-2 btn btn-success" %>
+        <%= link_to "注文履歴一覧を見る",admin_orders_path, class: "offset-2 btn btn-primary" %>
+    </div>
+</div>

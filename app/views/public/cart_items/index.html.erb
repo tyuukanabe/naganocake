@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 mx-2 mx-sm-auto rounded px- my-5">
+      <h4>ショッピングカート</h4>
+       <div class=text-right><%= link_to "カートを空にする", destroy_all_path, method: :delete, class: "btn btn-danger btn-sm" %></div>
+       <table class="col-16 table table-bordered mt-3">
+        <thead>
+         <tr class="table-active">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計(税込)</th>
+          <th></th>
+         </tr>
+        </thead>
+        <tbody>
+        <% @cart_items.each do |cart_item| %>
+         <tr>
+          <td><%= attachment_image_tag cart_item.item, :image, :fill,100,50 %> <%= cart_item.item.item_name %></td>
+          <!--単価（税込）-->
+          <td>¥<%= (cart_item.item.add_tax_price) %></td>
+          <!--数量変更-->
+          <td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
+          <%= f.select :quantity, [*1..10], selected: cart_item.quantity %>
+          <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+          <%= f.hidden_field :customer_id, :value => current_customer.id %>
+          <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+          <% end %>
+          </td>
+          <!--小計＝単価（税込）×数量-->
+          <td>
+          <% price = (cart_item.item.add_tax_price * cart_item.quantity) %>
+          ¥<%= price.to_s(:delimited) %>
+          </td>
+          <th><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm" %></th>
+         </tr>
+        <% @sum += price %>
+        <% end %>
+        </tbody>
+      </table>
+      <table class="col-3 table table-bordered mt-2" align="right">
+       <th class="table-active">合計金額(税込)</th>
+       <td class="col-6">¥<%= @sum.to_s(:delimited) %></td>
+      </table>
+      <div class="text-left my-4"><%= link_to "買い物を続ける", "/", class: "btn btn-primary" %></div>
+      <div class="text-right col-7"><%= link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-lg" %></div>
+    </div>
+  </div>
+</div>

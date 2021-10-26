@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <!--<h3 class="offset-1 my-3">会員情報編集</h3>-->
+    <div class="col-md-12 col-sm-12 mx-2 mx-sm-auto rounded px- my-5">
+     <h4>会員情報編集</h4>
+    <%= form_with model:@customer, local:true do |f| %>
+     <div class ="row my-4">
+  <div class="offset-1 col-2"><%= f.label :"氏名" %></div>
+  <div class="col-4 mb-2"><%= f.text_field :last_name,class: "form-control" %></div>
+  <div class="col-4 mb-2"><%= f.text_field :first_name,class: "form-control" %></div>
+  <div class="offset-1 col-2"><%= f.label :"フリガナ" %></div>
+  <div class="col-4 mb-2"><%= f.text_field :last_name_kana,class: "form-control" %></div>
+  <div class="col-4 mb-2"><%= f.text_field :first_name_kana,class: "form-control" %></div>
+  <div class="offset-1 col-2"><%= f.label :"郵便番号" %></div>
+  <div class="col-8 mb-2"><%= f.text_field :post_code,class: "form-control" %></div>
+  <div class="offset-1 col-2"><%= f.label :"住所" %></div>
+  <div class="col-8 mb-2"><%= f.text_field :address,class: "form-control" %></div>
+  <div class="offset-1 col-2"><%= f.label :"電話番号" %></div>
+  <div class="col-8 mb-2"><%= f.text_field :telephone,class: "form-control" %></div>
+  <div class="offset-1 col-2"><%= f.label :"メールアドレス" %></div>
+  <div class="col-8 mb-2"><%= f.text_field :email,class: "form-control" %></div>
+ </div>
+ <div class="text-center">
+  <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+  <%= link_to "退会する", confirm_path, class: "btn btn-danger" %>
+ </div>
+<% end %>
+   </div>
+ </div>
+</div>
+
