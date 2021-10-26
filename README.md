@@ -5,9 +5,7 @@ DMM WEBCAMPのチーム開発課題です。
 
 # 設計図
 
-### ER図はこちらから
-・
-・
+### ・ER図は[こちら](https://drive.google.com/file/d/1CseqlieC3RVMwD06XJy4RCwh6yJE7rwP/view?usp=sharing)から
 
 * Ruby version
 
