@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
          has_many :addresses, dependent: :destroy
          has_many :cart_items, dependent: :destroy
 
+  validates :is_deleted, inclusion: { in: [true, false] }
+
   def full_name
     self.last_name + " " + self.first_name
   end
